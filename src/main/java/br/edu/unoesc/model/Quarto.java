@@ -3,7 +3,12 @@ package br.edu.unoesc.model;
 import javax.persistence.*;
 
 @Entity
+@NamedQueries({
+	@NamedQuery (name= Quarto.TODOS_QUARTOS, query = "select q from Quarto q"),
+})
 public class Quarto implements MinhaEntidade{
+	
+	public static final String TODOS_QUARTOS = "TODOS_QUARTOS";
 	@Id
 	@GeneratedValue
 	private Long codigo;

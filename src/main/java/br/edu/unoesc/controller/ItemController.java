@@ -28,7 +28,7 @@ public class ItemController {
 		if (item != null) {
 			result.include("item", item);
 		}
-		result.include("mensagem", "teste");
+		result.include("mensagem", "Item");
 	}
 
 	@Post("/cadastrar")
@@ -40,7 +40,7 @@ public class ItemController {
 				// validator.add(new Messages());
 			}
 		}
-		result.include("agendaview", itemDao.listar(Item.class, "TODOS"));
+		result.include("itemview", itemDao.listar(Item.class, "TODOS"));
 	}
 
 	@Get("/editar/{codigo}")

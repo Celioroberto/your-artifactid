@@ -9,13 +9,13 @@
 <body>
 	Mesagem! ${mensagem}
 	
-	<form action="<c:url value='/item/cadastrar'/>" method="post">
+	<form action="<c:url value='/quarto/cadastrar'/>" method="post">
 		<br/>Codigo: <input type="text" 
-				name="item.codigo" value="${item.codigo}" 
-				readonly="readonly"/></br>
-		<br/>Nome: <input type="text" 
-				name="item.nome" value="${item.nome}"/></br>
-		<br/>Desc: <textarea name="item.descricao">${item.descricao}</textarea>
+				name="quarto.codigo" value="${quarto.codigo}" 
+				readonly="readonly"/>
+		<br/>Numero: <input type="text" 
+				name="item.nome" value="${quarto.numero}"/>
+		<br/>Situação: <textarea name="quarto.situacao">${quarto.situacao}</textarea>
 		<br/>
 		<br/><input type="submit" value="Enviar" />
 	</form>

@@ -9,10 +9,10 @@
 <body>
 	Items!!!
 	
-	<c:forEach items="${itemview}" var="item" >
-		<br/> ${item.codigo} -  
-		<a href="<c:url value='/editar/${item.codigo}'/>"> ${item.nome} </a>
-		<a href="<c:url value='/excluir/${item.codigo}'/>"> -- EXCLUIR </a>
+	<c:forEach items="${categoriaview}" var="categoria" >
+		<br/> ${categoria.codigo} -  
+		<a href="<c:url value='/editar/${categoria.codigo}'/>"> ${categoria.nome} </a>
+		<a href="<c:url value='/excluir/${categoria.codigo}'/>"> -- EXCLUIR </a>
 	</c:forEach>
 	
 	<a href="<c:url value='/home'/>">Voltar</a>

@@ -7,12 +7,12 @@
 <title>VRaptor Blank Project</title>
 </head>
 <body>
-	Items!!!
+	Quartos!!!
 	
-	<c:forEach items="${itemview}" var="item" >
-		<br/> ${item.codigo} -  
-		<a href="<c:url value='/editar/${item.codigo}'/>"> ${item.nome} </a>
-		<a href="<c:url value='/excluir/${item.codigo}'/>"> -- EXCLUIR </a>
+	<c:forEach items="${quartosview}" var="quarto" >
+		<br/> ${quarto.codigo} -  
+		<a href="<c:url value='/editar/${quarto.codigo}'/>"> ${quarto.numero} </a>
+		<a href="<c:url value='/excluir/${quarto.codigo}'/>"> -- EXCLUIR </a>
 	</c:forEach>
 	
 	<a href="<c:url value='/home'/>">Voltar</a>

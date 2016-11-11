@@ -1,6 +1,6 @@
 package br.edu.unoesc.model;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
