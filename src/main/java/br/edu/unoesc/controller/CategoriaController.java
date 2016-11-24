@@ -28,7 +28,7 @@ public class CategoriaController {
 		if (categoria != null) {
 			result.include("categoria", categoria);
 		}
-		result.include("mensagem", "teste");
+		result.include("categoriaview", categoriaDao.listar(Categoria.class, "TODOS"));
 	}
 
 	@Post("/cadastrar")
@@ -40,13 +40,13 @@ public class CategoriaController {
 				// validator.add(new Messages());
 			}
 		}
-		result.include("categoriaview", categoriaDao.listar(Categoria.class, "TODOS"));
+		
 	}
 
 	@Get("/editar/{codigo}")
 	public void editar(Long codigo) {
 		this.categoria = categoriaDao.buscar(Categoria.class, codigo);
-		result.forwardTo(CategoriaController.class).home();
+		result.forwardTo(CategoriaController.class).cadastrar(this.categoria);
 	}
 
 	@Get("/excluir/{codigo}")

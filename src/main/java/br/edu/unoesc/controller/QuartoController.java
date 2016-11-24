@@ -28,7 +28,7 @@ public class QuartoController {
 		if (quarto != null) {
 			result.include("quarto", quarto);
 		}
-		result.include("mensagem", "teste");
+		result.include("quartoview", quartoDao.listar(Quarto.class, "TODOS_QUARTOS"));
 	}
 
 	@Post("/cadastrar")
@@ -40,13 +40,13 @@ public class QuartoController {
 				// validator.add(new Messages());
 			}
 		}
-		result.include("quartoview", quartoDao.listar(Quarto.class, "TODOS_QUARTOS"));
+		
 	}
 
 	@Get("/editar/{codigo}")
 	public void editar(Long codigo) {
 		this.quarto = quartoDao.buscar(Quarto.class, codigo);
-		result.forwardTo(QuartoController.class).home();
+		result.forwardTo(QuartoController.class).cadastrar(this.quarto);
 	}
 
 	@Get("/excluir/{codigo}")

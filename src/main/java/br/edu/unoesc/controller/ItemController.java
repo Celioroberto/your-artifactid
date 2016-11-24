@@ -28,7 +28,7 @@ public class ItemController {
 		if (item != null) {
 			result.include("item", item);
 		}
-		result.include("mensagem", "Item");
+		result.include("itemview", itemDao.listar(Item.class, "TODOS"));
 	}
 
 	@Post("/cadastrar")
@@ -40,13 +40,13 @@ public class ItemController {
 				// validator.add(new Messages());
 			}
 		}
-		result.include("itemview", itemDao.listar(Item.class, "TODOS"));
+		
 	}
 
 	@Get("/editar/{codigo}")
 	public void editar(Long codigo) {
 		this.item = itemDao.buscar(Item.class, codigo);
-		result.forwardTo(ItemController.class).home();
+		result.forwardTo(ItemController.class).cadastrar(this.item);
 	}
 
 	@Get("/excluir/{codigo}")

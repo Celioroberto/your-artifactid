@@ -4,21 +4,39 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>VRaptor Blank Project</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/5dfa548964.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<title>Listagem de itens</title>
 </head>
-<body>
-	Mesagem! ${mensagem}
+<body>	
 	
-	<form action="<c:url value='/item/cadastrar'/>" method="post">
-		<br/>Codigo: <input type="text" 
-				name="item.codigo" value="${item.codigo}" 
-				readonly="readonly"/></br>
-		<br/>Nome: <input type="text" 
-				name="item.nome" value="${item.nome}"/></br>
-		<br/>Desc: <textarea name="item.descricao">${item.descricao}</textarea>
-		<br/>
-		<br/><input type="submit" value="Enviar" />
-	</form>
+	<div id="wrapper">
+	
+		<div class="container">
+			<h2>Listagem de itens</h2>
+			<table class="table table-hover">
+				<tr>
+					<th>Nome</th>					
+					<th>#</th>
+					<th>#</th>
+				</tr>
+				<c:forEach items="${itemview}" var="item" >
+					<tr>
+						<td> ${item.codigo} -  ${item.nome}</td>						
+						<td><a href="<c:url value='/editar/${item.codigo}'/>" class="btn btn-default"><i class="fa fa-edit"></i></a></td>
+						<td><a href="<c:url value='/excluir/${item.codigo}'/>"  class="btn btn-danger"><i class="fa fa-delete"></i></a></td>
+					</tr>
+				</c:forEach>
+			
+			</table>
+		
+		</div>
+	
+	</div>
 	
 </body>
 </html>
