@@ -51,10 +51,11 @@ public class ItemController {
 
 	@Get("/excluir/{codigo}")
 	public void excluir(Long codigo) {
-		Item pes = itemDao.buscar(Item.class, codigo);
+		Item item = itemDao.buscar(Item.class, codigo);
 		try {
-			itemDao.excluir(pes);
+			itemDao.excluir(item);
 			result.forwardTo(ItemController.class).cadastrar(null);
+			
 		} catch (DAOException e) {
 			validator.onErrorForwardTo(ItemController.class).cadastrar(null);
 		}
