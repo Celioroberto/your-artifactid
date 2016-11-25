@@ -9,11 +9,18 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 
 @Entity
+@NamedQueries({
+	@NamedQuery (name= Categoria.CATEGORIATODOS, query = "select c from Categoria c"),
+})
 public class Categoria implements MinhaEntidade {
+	
+	public static final String CATEGORIATODOS = "CATEGORIATODOS";
 
 	@Id
 	@GeneratedValue

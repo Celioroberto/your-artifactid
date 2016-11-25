@@ -16,7 +16,8 @@
 <body>
 	<div id="wrapper">
 		<div class="container">
-			<h2>Cadastro de quarto</h2>
+			<h2><a href="<c:url value='/quarto/home'/>" class="btn btn-default "><i class="fa fa-arrow-left"></i></a> Cadastro de quarto</h2>
+			<hr />
 			<form action="<c:url value='/quarto/cadastrar'/>" method="post">
 				<div class="input-group">
 					<label>Codigo:</label> 

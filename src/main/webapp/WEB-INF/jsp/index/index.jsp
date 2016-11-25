@@ -1,3 +1,5 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,16 +21,24 @@
 		<div class="container">
 			<h1>TRABALHO FINAL</h1>
 			<div class="row">
-				<div class="col-md-6">
-					<a href="<c:url value='/quarto'/>" class="btn btn-default btn-block">
+				<div class="col-md-4">
+					<a href="<c:url value="/quarto/home"/>" class="btn btn-default btn-block">
+					
+
 						<h2>QUARTOS</h2><br>
 						<i class="fa fa-5x fa-bed"></i>
 					</a>
 				</div>
-				<div class="col-md-6">
-					<a href="<c:url value='/categoria'/>" class="btn btn-default btn-block">
+				<div class="col-md-4">
+					<a href="<c:url value="/categoria/home"/>" class="btn btn-default btn-block">
 						<h2>CATEGORIAS</h2><br>
 						<i class="fa fa-5x fa-folder-open"></i>
+					</a>
+				</div>
+				<div class="col-md-4">
+					<a href="<c:url value="/item/home"/>" class="btn btn-default btn-block">
+						<h2>ITEM</h2><br>
+						<i class="fa fa-5x fa-cubes"></i>
 					</a>
 				</div>
 			</div>										

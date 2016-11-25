@@ -3,29 +3,40 @@
 
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>VRaptor Blank Project</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/5dfa548964.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<title>Listagem de Categorias</title>
 </head>
 <body>
-	Mesagem! ${mensagem}
+	<div id="wrapper">
 	
-	<form action="<c:url value='/categoria/cadastrar'/>" method="post">
-		<br/>Codigo: <input type="text" 
-				name="categoria.codigo" value="${categoria.codigo}" 
-				readonly="readonly"/>
-		<br/>
-		<br/>Categoria: <input type="text" name="categoria.nome" value="${categoria.nome}"/><br/>
-				
-		<br/>Quantidades pessoas: <input type="text" name="categoria.quantidade_pessoas">${categoria.quantidade_pessoas}</textarea>
-		<br/>
-		<br/>Quantidades crianças: <input type="text" name="categoria.quantidade_criancas">${categoria.quantidade_criancas}</textarea>
-		<br/>
-		<br/>Descrição: <textarea name="categoria.descricao">${categoria.descricao}</textarea>
-		<br/>
-		<br/>Valor diaria: <input type="text" name="categoria.valor_diaria">${categoria.valor_diaria}</textarea>
-		<br/>
-		<br/><input type="submit" value="Enviar" />
-	</form>
+		<div class="container">
+			<h2><a href="<c:url value='/index'/>" class="btn btn-default "><i class="fa fa-arrow-left"></i></a> Listagem de Categorias <a href="<c:url value='/categoria/cadastrar'/>" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Novo</a></h2>
+			<hr />
+			<table class="table table-hover">
+				<tr>
+					<th>Nome</th>
+					<th>#</th>
+					<th>#</th>
+				</tr>
+				<c:forEach items="${categoriaview}" var="categoria" >
+					<tr>
+						<td> ${categoria.codigo} -  ${categoria.nome} - ${categoria.descricao}</td>
+						<td><a href="<c:url value='/categoria/editar/${categoria.codigo}'/>" class="btn btn-default"><i class="fa fa-edit"></i></a></td>
+						<td><a href="<c:url value='/categoria/excluir/${categoria.codigo}'/>"  class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+					</tr>
+				</c:forEach>
+			
+			</table>
+		
+		</div>
 	
+	</div>
 </body>
 </html>

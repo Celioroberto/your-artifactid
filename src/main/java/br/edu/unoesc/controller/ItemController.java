@@ -28,9 +28,14 @@ public class ItemController {
 		if (item != null) {
 			result.include("item", item);
 		}
-		result.include("mensagem", "Item");
+		result.include("itemview", itemDao.listar(Item.class, "TODOS"));
 	}
-
+	
+	@Get("/cadastrar")
+	public void cadastrar() {				
+		result.include("item", item);
+	}
+	
 	@Post("/cadastrar")
 	public void cadastrar(Item item) {
 		if (item != null) {
@@ -40,24 +45,25 @@ public class ItemController {
 				// validator.add(new Messages());
 			}
 		}
-		result.include("itemview", itemDao.listar(Item.class, "TODOS"));
+		result.include("item", item);
 	}
 
-	@Get("/editar/{codigo}")
+	
+	@Get ("/editar/{codigo}")
 	public void editar(Long codigo) {
 		this.item = itemDao.buscar(Item.class, codigo);
-		result.forwardTo(ItemController.class).home();
+		result.forwardTo(ItemController.class).cadastrar(this.item);
 	}
 
+	
 	@Get("/excluir/{codigo}")
 	public void excluir(Long codigo) {
-		Item item = itemDao.buscar(Item.class, codigo);
+		Item pes = itemDao.buscar(Item.class, codigo);
 		try {
-			itemDao.excluir(item);
-			result.forwardTo(ItemController.class).cadastrar(null);
-			
+			itemDao.excluir(pes);
+			result.forwardTo(ItemController.class).home();
 		} catch (DAOException e) {
-			validator.onErrorForwardTo(ItemController.class).cadastrar(null);
+			validator.onErrorForwardTo(ItemController.class).home();
 		}
 	}
 	

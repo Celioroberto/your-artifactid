@@ -28,9 +28,14 @@ public class QuartoController {
 		if (quarto != null) {
 			result.include("quarto", quarto);
 		}
-		result.include("mensagem", "teste");
+		result.include("quartoview", quartoDao.listar(Quarto.class, "TODOS_QUARTOS"));
 	}
-
+	
+	@Get("/cadastrar")
+	public void cadastrar() {				
+		result.include("quarto", quarto);
+	}
+	
 	@Post("/cadastrar")
 	public void cadastrar(Quarto quarto) {
 		if (quarto != null) {
@@ -39,24 +44,26 @@ public class QuartoController {
 			} catch (DAOException e) {
 				// validator.add(new Messages());
 			}
+		}else{
+			quarto = new Quarto();
 		}
-		result.include("quartoview", quartoDao.listar(Quarto.class, "TODOS_QUARTOS"));
+		result.include("quarto", quarto);
 	}
 
 	@Get("/editar/{codigo}")
 	public void editar(Long codigo) {
 		this.quarto = quartoDao.buscar(Quarto.class, codigo);
-		result.forwardTo(QuartoController.class).home();
+		result.forwardTo(QuartoController.class).cadastrar(this.quarto);
 	}
 
 	@Get("/excluir/{codigo}")
 	public void excluir(Long codigo) {
-		Quarto pes = quartoDao.buscar(Quarto.class, codigo);
+		Quarto quarto = quartoDao.buscar(Quarto.class, codigo);
 		try {
-			quartoDao.excluir(pes);
-			result.forwardTo(QuartoController.class).cadastrar(null);
+			quartoDao.excluir(quarto);
+			result.forwardTo(QuartoController.class).home();
 		} catch (DAOException e) {
-			validator.onErrorForwardTo(QuartoController.class).cadastrar(null);
+			validator.onErrorForwardTo(QuartoController.class).home();
 		}
 	}
 	

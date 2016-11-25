@@ -18,7 +18,8 @@
 	<div id="wrapper">
 	
 		<div class="container">
-			<h2>Listagem de quartos</h2>
+			<h2><a href="<c:url value='/index'/>" class="btn btn-default "><i class="fa fa-arrow-left"></i></a> Listagem de quartos <a href="<c:url value='/quarto/cadastrar'/>" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Novo</a></h2>
+			<hr />
 			<table class="table table-hover">
 				<tr>
 					<th>Nome</th>
@@ -30,8 +31,8 @@
 					<tr>
 						<td> ${quarto.codigo} -  ${quarto.numero}</td>
 						<td><span class="label label-info">${quarto.situacao}</span></td>
-						<td><a href="<c:url value='/editar/${quarto.codigo}'/>" class="btn btn-default"><i class="fa fa-edit"></i></a></td>
-						<td><a href="<c:url value='/excluir/${quarto.codigo}'/>"  class="btn btn-danger"><i class="fa fa-delete"></i></a></td>
+						<td><a href="<c:url value='/quarto/editar/${quarto.codigo}'/>" class="btn btn-default"><i class="fa fa-edit"></i></a></td>
+						<td><a href="<c:url value='/quarto/excluir/${quarto.codigo}'/>"  class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
 					</tr>
 				</c:forEach>
 			
